@@ -1,7 +1,4 @@
 /**
- * Created by gipai on 10/3/2017.
- */
-/**
  * Created by gipai on 10/2/2017.
  */
 import { Injectable } from '@angular/core';
