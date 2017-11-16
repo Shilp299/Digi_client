@@ -2,22 +2,21 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
-import {Section} from './section';
+import {BoQ} from './boq';
 import {QueryParams} from "../home/query-obeservables/query-params";
-import {Sections} from './sections';
+import {BoQs} from "./boqs";
 import {Globals} from "../globals/globals";
 
 @Injectable()
-export class SectionService {
+export class BoQService {
 
+  private boqUrl = this.globals.getBackendUrl() +  'boq/';
 
-  private sectionUrl = this.globals.getBackendUrl() +  'section/';
-
-  constructor(private http: Http, private  sections: Sections, private globals: Globals ) {
+  constructor(private http: Http, private  boqs: BoQs, private globals: Globals ) {
 
   }
 
-  public getSections(queryParams: QueryParams)  {
+  public getBoQs(queryParams: QueryParams)  {
 
     let pageNumber = 0;
     const pageSize = 3;
@@ -29,7 +28,7 @@ export class SectionService {
         searchString = queryParams.searchString;
       }
     }
-    let endPoint = this.sectionUrl + '?pageNumber=' + pageNumber + '&size=' + pageSize;
+    let endPoint = this.boqUrl + '?pageNumber=' + pageNumber + '&size=' + pageSize;
     if (searchString) {
       endPoint += '&searchString=' + searchString;
     }
@@ -39,46 +38,45 @@ export class SectionService {
           const res1 = res.json();
           const response = res1.response;
           let i = 0;
-          const sections: Array<Section> =  new Array<Section>();
+          const boqs: Array<BoQ> =  new Array<BoQ>();
           for ( i = 0 ; i < response.length ; i++) {
-            const section: Section = new Section();
-            section.setSectionName(response[i].sectionName);
-            section.setSpecificationName(response[i].sepecificationName);
-            section.setProductNames(response[i].productNames);
-            section.setId(response[i].id);
-            sections.push(section);
+            const boq: BoQ = new BoQ();
+            boq.setProjectId(response[i].projectId);
+            boq.setBoQDepartmentName(response[i].departmentName);
+            boq.setVersion(response[i].version);
+            boq.setTotalVersions(response[i].totalVersions);
+            boq.setId(response[i].id);
+            boqs.push(boq);
           }
-          this.sections.setSections(sections);
-          this.sections.setTotalItems(res1.totalElements);
+          this.boqs.setBoQs(boqs);
+          this.boqs.setTotalItems(res1.totalElements);
           return true;
         }
       );
   }
 
-
-
-  public save(section: Section)  {
-    const endPoint = this.sectionUrl + section.getBoqId();
+  public save(boq: BoQ)  {
+    const endPoint = this.boqUrl + boq.getBoQDepartmentId();
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     // Returns response
-    return this.http.post(endPoint, section)
+    return this.http.post(endPoint, boq)
       .map(res => {
           const res1 = res.json();
-          section.setId(res1.id);
-          this.sections.addSection(section);
+          boq.setId(res1.id);
+          this.boqs.addBoQ(boq);
           return res1.id;
         }
       );
   }
 
   public delete(id: string)  {
-    const endPoint = this.sectionUrl  + id ;
+    const endPoint = this.boqUrl  + id ;
       // Returns response
     return this.http.delete(endPoint)
       .map(res => {
           const res1 = res.json();
-          this.sections.deleteSection(res1.id);
+          this.boqs.deleteBoQ(res1.id);
         }
       );
   }

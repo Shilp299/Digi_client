@@ -1,27 +1,25 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SectionService} from './section.service';
-import {Section} from './section';
-import {Sections} from "./sections";
+import {CategoryService} from './category.service';
+import {Category} from './category';
+import {Categories} from './categories';
 import {QueryParamsService} from '../home/query-obeservables/query-params.service';
 import {Subscription} from "rxjs/Subscription";
 import {QueryParams} from "../home/query-obeservables/query-params";
 
-
 @Component({
-  selector: 'section',
-  templateUrl: './section.component.html',
-  styleUrls: ['./section.component.scss']
+  selector: 'category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.scss']
 })
 
-export class SectionComponent implements OnInit {
-
+export class CategoryComponent implements OnInit {
   private subscription: Subscription;
   private currentSearchString: string;
   private currentPage = 1;
-  constructor(private  sectionService: SectionService,
-              private sections: Sections ,
-              private queryParamsService: QueryParamsService)  {
-    this.getSections(null);
+
+  constructor(private categoryService: CategoryService,
+              private queryParamsService: QueryParamsService, private categories: Categories)  {
+    this.getCategories(null);
   }
 
   ngOnInit() {
@@ -34,36 +32,35 @@ export class SectionComponent implements OnInit {
             this.currentPage = 1;
             this.currentSearchString = queryParam.searchString;
           }
-          this.getSections(queryParam);
+          this.getCategories(queryParam);
         }
       );
   }
 
-  public getSections(queryParams: QueryParams) {
-    this.sectionService.getSections(queryParams).subscribe(data => {
+  public getCategories(queryParams: QueryParams) {
+    this.categoryService.getCategories(queryParams).subscribe(data => {
       },
     error => {
-      console.log(error._body.toString());
+      window.alert(error._body.errorMessage);
     });
 
   }
 
-
-
-  public deleteSection(section: Section) {
-    this.sectionService.delete(section.getId()).subscribe(data => {
+  public deleteCategory(category: Category) {
+    this.categoryService.delete(category.getId()).subscribe(data => {
 
     });
   }
 
-  getPage(page: number ){
-    this.currentPage= page;
-    this.queryParamsService.setPageNumber( page-1);
+  getPage(page: number ) {
+    this.currentPage = page;
+    this.queryParamsService.setPageNumber( page - 1);
   }
 
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
     this.subscription.unsubscribe();
   }
+
 }
 
