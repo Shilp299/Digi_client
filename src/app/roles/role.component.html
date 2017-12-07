@@ -1,33 +1,27 @@
-<div class="container digi-user" >
+<div class="container digi-role rounded" >
   <div>
    <div class = "glyphicon glyphicon-cog">MANAGE ROLES AND PERMISSIONS</div>
-	<button class = "btn btn-primary round pull-right" data-toggle="modal" data-target="#newRole">+Add Role</button>
-   
+	<button class = "btn btn-primary round pull-right"><a href="#/new-role">+Add Role</a></button>   
   </div>
-  <table class="table table-bordered">
+
+  <table class="table table-bordered" id="team-list">
     <thead>
     <tr >
       <th>Role</th>
-      <th>Visibile </th>
       <th>Last Updated </th>
+      <th>Actions </th>
     </tr>
     </thead>
     <tbody>
      <tr *ngFor="let role of roles.roles">
         <td class = "table-cell">{{ role.name }}</td>
-        <td class = "table-cell"></td>
-        <td class = "table-cell"></td>
-
+        <td class = "table-cell">{{ role.lastUpdated }}</td>
          <td class = "table-cell">
-          <button type="button" class="btn btn-primary round" (click) = "deleteRole(role)">
-            <span class="glyphicon glyphicon-remove" ></span>
-          </button>
-          <button type="button" class="btn btn-primary round">
-            <span class="glyphicon glyphicon-pencil"></span></button>
+			<img src="assets/edit.svg" style="width:30px">
+			<img src="assets/delete.svg" (click) = "deleteRole(role)" style="width:30px">
         </td>
      </tr>
     </tbody>
   </table>
 <!-- 	<pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls> -->
-  	<new-role></new-role>
 </div>

@@ -1,15 +1,6 @@
-<!-- Trigger the modal with a button -->
-<!-- Modal -->
-<div class="modal fade" id="newRole" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" [ngStyle]="{'display': visible ? 'block' : 'none'}">
-  <div class="modal-dialog " role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Role</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+
+      <div class="container rounded">
+      <div class = "glyphicon glyphicon-cog">ADD ROLE</div>
         <form>
           <div class="form-group">
             <label for="role-name" class="form-control-label">Role Name:</label>
@@ -24,8 +15,10 @@
 			    <tr *ngFor="let permission of roleHelper.getPermissions() ">
 			      <td class = "table-cell">{{ permission }}</td>
 			      <td >
-			      <input
-			        type = "checkbox"  [checked]="permissions[permission]" (change) = "onChanged(permission)"  />
+			      <label class="switch">
+					  <input type="checkbox" [checked]="permissions[permission]" (change) = "onChanged(permission)"/>
+					  <span class="slider round"></span>
+				  </label>
 			      </td>
 			    </tr>
 			    </tbody>
@@ -34,11 +27,10 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
         <button type="button" class="btn btn-primary" (click)="addNewRole()" >Add</button>
       </div>
-    </div>
-  </div>
-</div>
+
+
 
 

@@ -12,41 +12,36 @@ declare var jQuery: any;
 @Component({
   selector: 'new-role',
   templateUrl: './new-role.component.html',
-  //styleUrls: ['./new-role.component.scss']
+  styleUrls: ['./new-role.component.scss']
 })
 
 export class NewRoleComponent   {
 
   private name: string ;
   private permissions  = {};
+  private permissionsKey = {};
   constructor(private  roleService: RoleService, private roles: Roles, private roleHelper: RoleHelper)  {
       for (let j = 0; j < this.roleHelper.getPermissions().length ; j ++) {
           const permission = this.roleHelper.getPermissions()[j];
           this.permissions[permission] = false;
         }
+      this.permissionsKey = this.roleHelper.getPermissionskey();
   }
 
- 
-
-  
   addNewRole() {
 
     let role: Role = new Role();
     role.setName(this.name);
     let selectedPermissions = new Array<string>();
- 
 
-   var keys = Object.keys( this.permissions);
+    var keys = Object.keys( this.permissions);
     
     for(let i = 0 ; i<keys.length ; i++){
- 
       if (this.permissions[keys[i]] === true) {
-         selectedPermissions.push(keys[i]);
+         selectedPermissions.push(this.permissionsKey[i]);
       }
     }
-
-
-
+    
     role.setPermissions(selectedPermissions);
     this.roleService.save(role).subscribe(data => {
         console.log(data);
@@ -57,8 +52,6 @@ export class NewRoleComponent   {
     }, error => {
       window.alert(error._body);
     });
-
-  
 
   }
   

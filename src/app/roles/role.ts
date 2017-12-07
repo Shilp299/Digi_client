@@ -9,6 +9,7 @@ export class Role {
 
   public  id: string;
   public  name: string;
+  public lastUpdated: string;
   public  permissions: Array<string>;
 
 
@@ -22,6 +23,14 @@ export class Role {
 
   public getName(): string {
     return this.name;
+  }
+
+  public setLastUpdated ( lastUpdated: string ) {
+    this.lastUpdated = lastUpdated;
+  }
+
+  public getLastUpdated (): string {
+    return this.lastUpdated;
   }
 
   public setId ( id: string ) {
@@ -45,7 +54,7 @@ export class Role {
     this.permissions.push(permission);
   }
 
-  public  deletePermission(permission:string) : void {
+  public  deletePermission(permission: string): void {
     let item = this.permissions.find(item => item === permission);
     const index: number = this.permissions.indexOf(item);
     if (index !== -1) {

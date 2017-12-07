@@ -17,6 +17,8 @@ import { PhaseModule } from '../phase/phase.module';
 import {QueryParamsService} from './query-obeservables/query-params.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {RoleComponent} from '../roles/role.component';
+import {NewRoleModule} from '../roles/new/new-role.module';
+import {NewRoleComponent} from '../roles/new/new-role.component';
 import {RoleModule} from '../roles/role.module';
 import { DocumentComponent } from '../document/document.component';
 import { DocumentModule } from '../document/document.module';
@@ -46,9 +48,12 @@ import { EmployeeComponent } from '../employee/employee.component';
 import { EmployeeModule } from '../employee/employee.module';
 import { NewEmployeeComponent } from '../employee/new/new-employee.component';
 import { NewEmployeeModule } from '../employee/new/new-employee.module';
+import { LoginComponent } from '../login/login.component';
+import { LoginModule } from '../login/login.module';
 
 const userState = { name: 'user', url: '/user',  component: UserComponent };
 const roleState = { name: 'role', url: '/role',  component: RoleComponent };
+const newRoleState = { name: 'new-role', url: '/new-role',  component: NewRoleComponent };
 const projectState = { name: 'project', url: '/project',  component: ProjectComponent };
 const clientState = { name: 'client', url: '/client',  component: ClientComponent };
 const companyState = { name: 'company', url: '/company',  component: CompanyComponent };
@@ -67,6 +72,7 @@ const subcategoryState = { name: 'subcategory', url: '/subcategory',  component:
 const newSubcategoryState = { name: 'new-subcategory', url: '/new-subcategory',  component: NewSubcategoryComponent };
 const employeeState = { name: 'employee', url: '/employee',  component: EmployeeComponent };
 const newEmployeeState = { name: 'new-employee', url: '/new-employee',  component: NewEmployeeComponent };
+const loginState = { name: 'login', url: '/user-login',  component: LoginComponent };
 
 @NgModule({
   declarations: [
@@ -76,7 +82,9 @@ const newEmployeeState = { name: 'new-employee', url: '/new-employee',  componen
     NgxPaginationModule,
     HeaderModule,
     UserModule,
+    //LoginModule,
     RoleModule,
+    NewRoleModule,
     ProjectModule,
     ClientModule,
     CompanyModule,
@@ -97,7 +105,7 @@ const newEmployeeState = { name: 'new-employee', url: '/new-employee',  componen
     NewSubcategoryModule,
     EmployeeModule,
     NewEmployeeModule,
-    UIRouterModule.forRoot({ states: [ userState, roleState, projectState, clientState, companyState,
+    UIRouterModule.forRoot({ states: [ userState, roleState, newRoleState, projectState, clientState, companyState,
       phaseState, documentState, newDocumentState, boqState, newBoQState, departmentState, sectionState,
       productState, newProductState, categoryState, newCategoryState, subcategoryState, newSubcategoryState,
       employeeState, newEmployeeState], useHash: true })

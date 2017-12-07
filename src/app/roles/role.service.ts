@@ -17,7 +17,7 @@ export class RoleService {
 
 
   private userUrl =  'role/';
-  constructor(private http: Http,private globals: Globals,private roles : Roles ) {
+  constructor(private http: Http,private globals: Globals, private roles: Roles ) {
 
   }
 
@@ -34,6 +34,7 @@ export class RoleService {
             const role: Role = new Role();
             role.setId(response[i].id);
             role.setName(response[i].name);
+            role.setLastUpdated(response[i].lastUpdated);
             role.setPermissions(response[i].permissions);
             roles.push(role);
           }
@@ -48,7 +49,7 @@ export class RoleService {
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
     // Returns response
-    return this.http.patch(endPoint,role,options)
+    return this.http.patch(endPoint, role, options)
       .map(res => {
           const res1 = res.json();
           return res1.id;
