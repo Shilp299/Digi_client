@@ -1,9 +1,12 @@
 import { Company } from '../company';
 import { Companies } from '../companies';
 import { CompanyService } from '../company.service';
-
+import { StateService } from '@uirouter/angular';
+import { CompanyComponent } from '../company.component';
 import { Component, Input, OnInit } from '@angular/core';
-declare var jQuery:any;
+
+//declare var jQuery:any;
+const companyState = { name: 'company', url: '/company',  component: CompanyComponent };
 @Component({
   selector: 'new-company',
   templateUrl: './new-company.component.html',
@@ -16,7 +19,7 @@ export class NewCompanyComponent implements OnInit {
 
 
   constructor(private companyService: CompanyService,
-              private companies: Companies)  {
+              private companies: Companies, public stateService: StateService)  {
 
   }
 
@@ -32,12 +35,15 @@ export class NewCompanyComponent implements OnInit {
         console.log(data);
         company.setId(data);
         this.companies.addCompany(company);
-      jQuery('.modal').modal('toggle');
+      this.stateService.go('company');
 
     }, error => {
       window.alert(error._body);
     });
-
-
   }
+  
+  goBack() {
+    	window.history.back();
+  }
+  	
 }

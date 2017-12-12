@@ -5,7 +5,11 @@ import { Section } from '../section';
 import { SectionService } from '../section.service';
 import { Sections } from '../sections';
 import { Component, Input, OnInit } from '@angular/core';
-declare var jQuery:any;
+import {StateService } from '@uirouter/angular';
+import { SectionComponent } from '../section.component';
+
+//declare var jQuery:any;
+const sectionState = { name: 'section', url: '/section',  component: SectionComponent };
 @Component({
   selector: 'new-section',
   templateUrl: './new-section.component.html',
@@ -19,7 +23,7 @@ export class NewSectionComponent implements OnInit {
   constructor(private sectionService: SectionService, 
               private boQService: BoQService, 
               private sections: Sections,
-              private boQs: BoQs)  {
+              private boQs: BoQs,  public stateService: StateService)  {
   }
 
   ngOnInit() {
@@ -34,7 +38,7 @@ export class NewSectionComponent implements OnInit {
         console.log(data);
         section.setId(data);
         this.sections.addSection(section);
-      jQuery('.modal').modal('toggle');
+      this.stateService.go('section');
 
     }, error => {
       window.alert(error._body);
@@ -50,4 +54,7 @@ export class NewSectionComponent implements OnInit {
     });
   }
 
+  goBack() {
+    window.history.back();
+  }
 }

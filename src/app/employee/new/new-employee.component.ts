@@ -7,15 +7,20 @@ import { Companies } from '../../company/companies';
 import { CompanyService } from '../../company/company.service';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
+import { EmployeeComponent } from '../employee.component';
 import { Employees } from '../employees';
+import { StateService } from '@uirouter/angular';
 
-declare var jQuery:any;
+//declare var jQuery:any;
+const employeeState = { name: 'employee', url: '/employee',  component: EmployeeComponent };
 
 @Component({
   selector: 'new-employee',
   templateUrl: './new-employee.component.html',
   styleUrls: ['./new-employee.component.scss']
 })
+ 
+
 export class NewEmployeeComponent implements OnInit {
    private availableCompanies: Company[];
    private availableProjects: Project[];
@@ -32,10 +37,11 @@ export class NewEmployeeComponent implements OnInit {
    private mobile: string ;
    private companyId: string ;
    private projectIds: string[];
-
+  
   constructor(private  employeeService: EmployeeService, private companyService: CompanyService, private projectService: ProjectService,
-              private employees: Employees, private companies: Companies, private projects: Projects)  {
-
+              private employees: Employees, private companies: Companies, private projects: Projects,
+              public stateService: StateService)  {
+  		//this.router = router;
   }
 
   ngOnInit() {
@@ -63,11 +69,12 @@ export class NewEmployeeComponent implements OnInit {
         console.log(data);
         employee.setId(data);
         this.employees.addEmployee(employee);
-      jQuery('.modal').modal('toggle');
-
+         this.stateService.go('employee');
+	    
     }, error => {
       window.alert(error._body);
     });
+   
   }
   
   getCompanies() {
@@ -84,4 +91,9 @@ export class NewEmployeeComponent implements OnInit {
       window.alert(error._body);
     });
   }
+  
+  goBack() {
+    window.history.back();
+  }
+  
 }

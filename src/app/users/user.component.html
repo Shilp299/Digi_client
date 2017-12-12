@@ -1,4 +1,8 @@
-<div class="container digi-user" >
+<div class="container-fluid digi-user" >
+<div class="column">
+	<div class = "glyphicon glyphicon-cog">MANAGE USER</div>
+	<a href="#/new-user" class="btn btn-primary round pull-right" role="button">+Add User</a>
+</div>
 <table class="table table-bordered">
   <thead>
   <tr>
@@ -23,12 +27,9 @@
           </button>
           <button type="button" class="btn btn-primary">
             <span class="glyphicon glyphicon-pencil"></span></button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newUser">
-             <span class="glyphicon glyphicon-plus" ></span></button>
         </td>
      </tr>
   </tbody>
  </table>
   <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
-  <new-user></new-user>
 </div>

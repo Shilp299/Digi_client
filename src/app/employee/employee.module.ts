@@ -3,6 +3,7 @@ import { EmployeeComponent } from './employee.component';
 import {EmployeeService} from './employee.service';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
+import {RouterModule} from '@angular/router';
 import {NewEmployeeModule} from './new/new-employee.module';
 import {Employees} from './employees';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -11,8 +12,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
   imports: [
     BrowserModule,
     HttpModule,
-    NgxPaginationModule,
-    NewEmployeeModule
+    //RouterModule,
+    NgxPaginationModule
+    //NewEmployeeModule
   ],
   declarations: [
     EmployeeComponent

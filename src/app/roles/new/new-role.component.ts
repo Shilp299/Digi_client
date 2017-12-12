@@ -8,7 +8,11 @@ import { RoleHelper } from '../role-helper';
 import { Roles } from '../roles';
 import { OnInit } from '@angular/core';
 
-declare var jQuery: any;
+import {StateService } from '@uirouter/angular';
+import { RoleComponent } from '../role.component';
+
+//declare var jQuery:any;
+const roleState = { name: 'role', url: '/role',  component: RoleComponent };
 @Component({
   selector: 'new-role',
   templateUrl: './new-role.component.html',
@@ -20,7 +24,7 @@ export class NewRoleComponent   {
   private name: string ;
   private permissions  = {};
   private permissionsKey = {};
-  constructor(private  roleService: RoleService, private roles: Roles, private roleHelper: RoleHelper)  {
+  constructor(private  roleService: RoleService, private roles: Roles, private roleHelper: RoleHelper,  public stateService: StateService)  {
       for (let j = 0; j < this.roleHelper.getPermissions().length ; j ++) {
           const permission = this.roleHelper.getPermissions()[j];
           this.permissions[permission] = false;
@@ -47,7 +51,7 @@ export class NewRoleComponent   {
         console.log(data);
         role.setId(data);
         this.roles.addRole(role);
-      jQuery('.modal').modal('toggle');
+      this.stateService.go('role');
 
     }, error => {
       window.alert(error._body);
@@ -60,4 +64,9 @@ export class NewRoleComponent   {
      this.permissions[permission] = !value;
   
   }
+  
+  goBack() {
+    window.history.back();
+  }
+  
 }

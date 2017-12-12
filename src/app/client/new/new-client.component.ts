@@ -5,7 +5,11 @@ import { Client } from '../client';
 import { ClientService } from '../client.service';
 import { Clients } from '../clients';
 import { Component, Input, OnInit } from '@angular/core';
-declare var jQuery:any;
+import {StateService } from '@uirouter/angular';
+import { ClientComponent } from '../client.component';
+
+//declare var jQuery:any;
+const clientState = { name: 'client', url: '/client',  component: ClientComponent };
 @Component({
   selector: 'new-client',
   templateUrl: './new-client.component.html',
@@ -17,10 +21,8 @@ export class NewClientComponent implements OnInit {
    private address: string ;
    private companyId: string ;
 
-  constructor(private  clientService: ClientService, 
-              private companyService: CompanyService, 
-              private clients: Clients, 
-              private companies: Companies)  {
+  constructor(private  clientService: ClientService, private companyService: CompanyService, 
+              private clients: Clients, private companies: Companies,  public stateService: StateService)  {
 
   }
 
@@ -38,7 +40,7 @@ export class NewClientComponent implements OnInit {
         console.log(data);
         client.setId(data);
         this.clients.addClient(client);
-      jQuery('.modal').modal('toggle');
+      this.stateService.go('client');
 
     }, error => {
       window.alert(error._body);
@@ -55,4 +57,7 @@ export class NewClientComponent implements OnInit {
     });
   }
 
+ goBack() {
+    window.history.back();
+  }
 }

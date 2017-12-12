@@ -6,7 +6,11 @@ import { Subcategories } from '../subcategories';
 import { SubcategoryService } from '../subcategory.service';
 
 import { Component, Input, OnInit } from '@angular/core';
-declare var jQuery: any;
+import {StateService } from '@uirouter/angular';
+import { SubcategoryComponent } from '../subcategory.component';
+
+//declare var jQuery:any;
+const subcategoryState = { name: 'subcategory', url: '/subcategory',  component: SubcategoryComponent };
 @Component({
   selector: 'new-subcategory',
   templateUrl: './new-subcategory.component.html',
@@ -19,7 +23,7 @@ export class NewSubcategoryComponent implements OnInit {
   private categoryId: string;
 
   constructor(private subcategoryService: SubcategoryService, private categoryService: CategoryService,
-     private categories: Categories)  {
+     private categories: Categories,  public stateService: StateService)  {
 
   }
 
@@ -34,7 +38,7 @@ export class NewSubcategoryComponent implements OnInit {
     category.setCategoryId(this.categoryId);
     this.subcategoryService.save(category).subscribe(data => {
         console.log(data);
-      jQuery('.modal').modal('toggle');
+      this.stateService.go('subcategory');
 
     }, error => {
       console.log(error._body.toString());
@@ -48,4 +52,9 @@ export class NewSubcategoryComponent implements OnInit {
        console.log(error._body.toString());
     });
   }
+  
+  goBack() {
+    window.history.back();
+  }
+  
 }

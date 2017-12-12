@@ -5,9 +5,13 @@ import { Document } from '../document';
 import { DocumentService } from '../document.service';
 import { Documents } from '../documents';
 import { Component, Input, OnInit } from '@angular/core';
-declare var jQuery:any;
+import {StateService } from '@uirouter/angular';
+import { DocumentComponent } from '../document.component';
+
+//declare var jQuery:any;
+const documentState = { name: 'document', url: '/document',  component: DocumentComponent };
 @Component({
-  selector: 'new-file',
+  selector: 'new-document',
   templateUrl: './new-file.component.html',
   styleUrls: ['./new-file.component.scss']
 })
@@ -19,7 +23,7 @@ export class NewDocumentComponent implements OnInit {
   constructor(private documentService: DocumentService, 
               private projectService: ProjectService, 
               private documents: Documents,
-              private projects: Projects)  {
+              private projects: Projects, public stateService: StateService)  {
 
   }
 
@@ -32,10 +36,12 @@ export class NewDocumentComponent implements OnInit {
     document.setProjectId(this.projectId);
     this.documentService.save(event, document ).subscribe(data => {
         console.log(data);
+         this.stateService.go('document');
     }, error => {
       window.alert(error._body);
     });
   }
+  
   getProjects(){
     this.projectService.getProjects(null).subscribe( data => {
       this.availableProjects = this.projects.getProjects();
@@ -44,4 +50,7 @@ export class NewDocumentComponent implements OnInit {
     });
   }
 
+  goBack() {
+    window.history.back();
+  }
 }

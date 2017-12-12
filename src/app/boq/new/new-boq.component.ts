@@ -1,12 +1,16 @@
 import { BoQ } from '../boq';
 import { BoQs } from '../boqs';
 import { BoQService } from '../boq.service';
+import { BoQComponent } from '../boq.component';
 import { Department } from '../../department/department';
 import { Departments } from '../../department/departments';
 import { DepartmentService } from '../../department/department.service';
-
+import {StateService } from '@uirouter/angular';
 import { Component, Input, OnInit } from '@angular/core';
-declare var jQuery:any;
+
+//declare var jQuery:any;
+const boqState = { name: 'boq', url: '/boq',  component: BoQComponent };
+
 @Component({
   selector: 'new-boq',
   templateUrl: './new-boq.component.html',
@@ -19,7 +23,7 @@ export class NewBoQComponent implements OnInit {
    private totalVersions: number;
 
   constructor(private departmentService: DepartmentService, private boqService: BoQService,
-              private boqs: BoQs, private departments: Departments)  {
+              private boqs: BoQs, private departments: Departments,  public stateService: StateService)  {
 
   }
 
@@ -34,18 +38,22 @@ export class NewBoQComponent implements OnInit {
         console.log(data);
         boq.setId(data);
         this.boqs.addBoQ(boq);
-      jQuery('.modal').modal('toggle');
+      this.stateService.go('boq');
 
     }, error => {
       window.alert(error._body);
     });
   }
 
-getDepartments() {
+  getDepartments() {
     this.departmentService.getDepartments(null).subscribe( data => {
       this.availableDepartments = this.departments.getDepartments();
     }, error => {
       window.alert(error._body);
     });
+  }
+  
+  goBack() {
+    window.history.back();
   }
 }

@@ -1,4 +1,4 @@
-<div class="container rounded" >
+<div class="container-fluid rounded" >
  	<div class = "glyphicon glyphicon-cog">ADD BOQ</div>
       <div >
         <form>
@@ -11,7 +11,7 @@
             </select>
           </div>
           <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-secondary" (click)="goBack()">Cancel</button>
 	        <button type="button" class="btn btn-primary" (click)="addNewBoQ()" >Add</button>
       	  </div>
         </form>

@@ -4,9 +4,12 @@ import { DepartmentService } from '../department.service';
 import { Project } from '../../project/project';
 import { Projects } from '../../project/projects';
 import { ProjectService } from '../../project/project.service';
-
 import { Component, Input, OnInit } from '@angular/core';
-declare var jQuery:any;
+import {StateService } from '@uirouter/angular';
+import { DepartmentComponent } from '../department.component';
+
+//declare var jQuery:any;
+const departmentState = { name: 'department', url: '/department',  component: DepartmentComponent };
 @Component({
   selector: 'new-department',
   templateUrl: './new-department.component.html',
@@ -18,7 +21,7 @@ export class NewDepartmentComponent implements OnInit {
    private projectId: string;
 
   constructor(private departmentService: DepartmentService, private projectService: ProjectService,
-              private departments: Departments, private projects: Projects)  {
+              private departments: Departments, private projects: Projects, public stateService: StateService)  {
 
   }
 
@@ -34,7 +37,7 @@ export class NewDepartmentComponent implements OnInit {
         console.log(data);
         department.setId(data);
         this.departments.addDepartment(department);
-      jQuery('.modal').modal('toggle');
+      this.stateService.go('department');
 
     }, error => {
       window.alert(error._body);
@@ -47,5 +50,9 @@ getProjects(){
     }, error => {
       window.alert(error._body);
     });
+  }
+  
+  goBack() {
+    window.history.back();
   }
 }

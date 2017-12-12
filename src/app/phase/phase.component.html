@@ -1,4 +1,8 @@
-<div class="container digi-phase" >
+<div class="container-fluid digi-phase rounded" >
+<div class="column">
+<div class = "glyphicon glyphicon-cog">MANAGE PHASES</div>
+	<a href="#/new-phase" class="btn btn-primary round pull-right" role="button">+Add Phase</a>
+</div>
 <table class="table table-bordered">
   <thead>
   <tr>
@@ -15,12 +19,10 @@
           </button>
           <button type="button" class="btn btn-primary">
             <span class="glyphicon glyphicon-pencil"></span></button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPhase">
-             <span class="glyphicon glyphicon-plus" ></span></button>
+ 
         </td>
      </tr>
   </tbody>
  </table>
   <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
-  <new-phase></new-phase>
 </div>

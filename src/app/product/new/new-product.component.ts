@@ -8,7 +8,11 @@ import { Category } from '../../category/category';
 import { Categories } from '../../category/categories';
 import { CategoryService } from '../../category/category.service';
 import { Component, Input, OnInit } from '@angular/core';
-declare var jQuery:any;
+import {StateService } from '@uirouter/angular';
+import { ProductComponent } from '../product.component';
+
+//declare var jQuery:any;
+const productState = { name: 'product', url: '/product',  component: ProductComponent };
 @Component({
   selector: 'new-product',
   templateUrl: './new-product.component.html',
@@ -27,7 +31,7 @@ export class NewProductComponent implements OnInit {
   private description: string;
 
   constructor(private sectionService: SectionService, private productService: ProductService, private categoryService: CategoryService,
-              private products: Products, private sections: Sections, private categories: Categories)  {
+              private products: Products, private sections: Sections, private categories: Categories,  public stateService: StateService)  {
 
   }
 
@@ -50,7 +54,7 @@ export class NewProductComponent implements OnInit {
         console.log(data);
         product.setId(data);
         this.products.addProduct(product);
-      jQuery('.modal').modal('toggle');
+      this.stateService.go('product');
 
     }, error => {
       console.log(error._body.toString());
@@ -71,4 +75,9 @@ export class NewProductComponent implements OnInit {
        console.log(error._body.toString());
     });
   }
+  
+  goBack() {
+    window.history.back();
+  }
+  
 }

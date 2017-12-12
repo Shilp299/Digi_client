@@ -1,24 +1,25 @@
 <header class="body1"></header>
-<div id = "layoutContainer" class ="row"  >
-  <div class="col-xs-6 col-md-3">
+<div id = "container-fluid" >
+<div class ="row" > 
+  <div class="pull-left col-md-3">
   <div class="panel-group" id="accordion">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title">
+      <h6 class="panel-title">
         <a class="accordion-toggle glyphicon glyphicon-home" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
          OVERVIEW
         </a>
-      </h4>
+      </h6>
     </div>
 
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title">
+      <h6 class="panel-title">
          <img src="assets/project management black.svg" style="width:20px"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
           PROJECT MANAGEMENT
         </a>
-      </h4>
+      </h6>
     </div>
     <div id="collapseTwo" class="panel-collapse collapse">
       <div class="panel-body">
@@ -34,11 +35,11 @@
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title">
+      <h6 class="panel-title">
         <img src="assets/user management black.svg" style="width:20px"><a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
           USER MANAGEMENT
         </a>
-      </h4>
+      </h6>
     </div>
     <div id="collapseThree" class="panel-collapse collapse">
       <div class="panel-body">
@@ -52,11 +53,11 @@
   </div>
 	<div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title">
+      <h6 class="panel-title">
         <a class="accordion-toggle glyphicon glyphicon-user " data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
           CLIENT MANAGEMENT
         </a>
-      </h4>
+      </h6>
     </div>
     <div id="collapseFour" class="panel-collapse collapse">
       <div class="panel-body">
@@ -67,11 +68,11 @@
   
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title">
+      <h6 class="panel-title">
         <a class="accordion-toggle glyphicon glyphicon-user " data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
           COMPAMY MANAGEMENT
         </a>
-      </h4>
+      </h6>
     </div>
     <div id="collapseFive" class="panel-collapse collapse">
       <div class="panel-body">
@@ -82,11 +83,11 @@
   
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title">
+      <h6 class="panel-title">
         <a class="accordion-toggle glyphicon glyphicon-user " data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
           BoQ MANAGEMENT
         </a>
-      </h4>
+      </h6>
     </div>
     <div id="collapseSix" class="panel-collapse collapse">
       <div class="panel-body">
@@ -101,11 +102,11 @@
   
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title">
+      <h6 class="panel-title">
         <img src="assets/documents black.svg" style="width:20px"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
          DOCUMENT
         </a>
-      </h4>
+      </h6>
     </div>
     <div id="collapseSeven" class="panel-collapse collapse">
       <div class="panel-body">
@@ -117,11 +118,12 @@
   
 </div>
   </div>
-  <div class="col-xs-6 col-md-9">
+  <div class= "col-md-9">
    <div class="column">
 	  <div><search ></search></div>
 	  <div><ui-view></ui-view></div>
 	  </div>
+  </div>
   </div>
 </div>
 

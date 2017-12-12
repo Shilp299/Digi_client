@@ -1,7 +1,7 @@
-<div class="container digi-section rounded" >
+<div class="container-fluid digi-section rounded" >
 <div class="column">
 <div class = "glyphicon glyphicon-cog">MANAGE SECTIONS</div>
-	<button class = "btn btn-primary round pull-right" data-toggle="modal" data-target="#newSection">+Add Section</button>
+	<a href="#/new-section" class="btn btn-primary round pull-right" role="button">+Add Section</a>
 </div>
 <table class="table">
   <thead>
@@ -28,5 +28,5 @@
   </tbody>
  </table>
   <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
-  <new-section></new-section>
+ 
 </div>

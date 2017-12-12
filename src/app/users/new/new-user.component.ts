@@ -9,7 +9,11 @@ import {User} from '../user';
 import { OnInit } from '@angular/core';
 import {Users} from "../users";
 import {Roles} from "../../roles/roles";
-declare var jQuery:any;
+import {StateService } from '@uirouter/angular';
+import { UserComponent } from '../user.component';
+
+//declare var jQuery:any;
+const userState = { name: 'user', url: '/user',  component: UserComponent };
 @Component({
   selector: 'new-user',
   templateUrl: './new-user.component.html',
@@ -33,7 +37,7 @@ export class NewUserComponent implements OnInit {
   constructor(private  userService: UserService,
               private  roleService: RoleService,
               private roles: Roles,
-              private users: Users)  {
+              private users: Users,  public stateService: StateService)  {
 
   }
 
@@ -58,13 +62,17 @@ export class NewUserComponent implements OnInit {
         console.log(data);
         user.setId(data);
         this.users.addUser(user);
-      jQuery('.modal').modal('toggle');
+      this.stateService.go('user');
 
     }, error => {
       window.alert(error._body);
     });
 
 
+  }
+  
+  goBack() {
+    window.history.back();
   }
 
   getRoles() {

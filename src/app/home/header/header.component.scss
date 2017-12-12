@@ -5,30 +5,13 @@ html {
   box-sizing: border-box;
   
 }
-
-
 .grid {
-  display: flex;
-  flex-flow: row; 
-  flex-wrap: wrap;
-  width: 100%;
-  background: #eee;
+
+  background: #ffffff;
 
 }
+
 .grid-logo-cell {
   flex: 1;
-}
-
-
-.grid-user-cell {
-  flex : 1 0 10%;
-}
-.grid-right {
-  justify-content: flex-end;
-}
-
-
-
-.loggedinUser{
-   justify-content: flex-end;
+  background: #ffffff;
 }

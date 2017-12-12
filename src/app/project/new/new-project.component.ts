@@ -8,8 +8,11 @@ import { PhaseService } from '../../phase/phase.service';
 import { Project } from '../project';
 import { ProjectService } from '../project.service';
 import { Projects } from '../projects';
+import {StateService } from '@uirouter/angular';
+import { ProjectComponent } from '../project.component';
 
-declare var jQuery:any;
+//declare var jQuery:any;
+const projectState = { name: 'project', url: '/project',  component: ProjectComponent };
 
 @Component({
   selector: 'new-project',
@@ -29,7 +32,7 @@ export class NewProjectComponent implements OnInit {
 
   constructor(private  projectService: ProjectService,private  clientService: ClientService,
               private phaseService: PhaseService,private projects: Projects, 
-              private clients: Clients, private phases: Phases)  {
+              private clients: Clients, private phases: Phases, public stateService: StateService)  {
 
   }
 
@@ -50,7 +53,7 @@ export class NewProjectComponent implements OnInit {
         console.log(data);
         project.setId(data);
         this.projects.addProject(project);
-      jQuery('.modal').modal('toggle');
+      this.stateService.go('project');
 
     }, error => {
       window.alert(error._body);
@@ -74,4 +77,9 @@ export class NewProjectComponent implements OnInit {
       window.alert(error._body);
     });
   }
+  
+  goBack() {
+    window.history.back();
+  }
+  
 }

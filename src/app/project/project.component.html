@@ -1,7 +1,7 @@
-<div class="container digi-project rounded" >
+<div class="container-fluid digi-project rounded" >
 <div class="column">
 	<div class = "glyphicon glyphicon-cog">MANAGE PROJECTS</div>
-	<button class = "btn btn-primary round" data-toggle="modal" data-target="#newProject">+Add Project</button>
+	<a href="#/new-project" class="btn btn-primary round pull-right" role="button">+Add Project</a>
 </div>
 
 <table class="table ">
@@ -33,5 +33,4 @@
   </tbody>
  </table>
   <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
-  <new-project></new-project>
 </div>

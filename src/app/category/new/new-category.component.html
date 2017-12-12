@@ -1,4 +1,4 @@
-<div class="container rounded" >
+<div class="container-fluid rounded" >
  	<div class = "glyphicon glyphicon-cog">ADD PRODUCT</div>
       <div >
         <form>
@@ -13,6 +13,7 @@
             <input type="textarea" class="form-control" id="description" [(ngModel)]="description" name="first">
           </div>
           <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="goBack()">Cancel</button>
 	        <button type="button" class="btn btn-primary" (click)="addNewCategory()" >Add</button>
       	  </div>
         </form>

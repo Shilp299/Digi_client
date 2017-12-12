@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions ,Headers } from '@angular/http';
+import { Http, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import {Employee} from './employee';
 import {QueryParams} from "../home/query-obeservables/query-params";
 import {Employees} from "./employees";
 import {Globals} from "../globals/globals";
+import { EmployeeComponent } from './employee.component';
 
+  
 @Injectable()
 export class EmployeeService {
 
 
   private employeeUrl = this.globals.getBackendUrl() +  'employee/';
-
+  
   constructor(private http: Http, private  employees: Employees, private globals: Globals ) {
+  	
   }
 
   public getEmployees(queryParams: QueryParams)  {
