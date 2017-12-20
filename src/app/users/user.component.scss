@@ -6,7 +6,7 @@
 }
 .btn {
   display: inline-block;
-  padding: 2px 5px;
+  padding: 6px 12px;
   margin-bottom: 0;
   font-size: 12px;
   font-weight: normal;
@@ -22,7 +22,7 @@
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
-  padding: 8px 12px;
+  padding: 10px 16px;
 }
 
 .btn-primary {
@@ -53,6 +53,7 @@
 ************************/
 
 .btn {
+    padding: 14px 24px;
     border: 0 none;
     font-weight: 700;
     letter-spacing: 1px;
@@ -62,7 +63,7 @@
 }
 
 .btn-primary {
-    background: #00ADEE;
+    background: #0099cc;
     color: #ffffff;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
@@ -76,4 +77,18 @@
 .rounded {
   border-radius: 10px;
   background: #FFFFFF; 
+}
+
+table#team-list {
+    counter-reset: rowNumber+ 1;
+}
+
+table#team-list tr:nth-child(n+1) {
+    counter-increment: rowNumber;
+}
+
+table#team-list tr:nth-child(n+1) td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
 }

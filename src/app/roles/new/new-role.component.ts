@@ -49,8 +49,8 @@ export class NewRoleComponent   {
     role.setPermissions(selectedPermissions);
     this.roleService.save(role).subscribe(data => {
         console.log(data);
-        role.setId(data);
-        this.roles.addRole(role);
+        //role.setId(data);
+        //this.roles.addRole(role);
       this.stateService.go('role');
 
     }, error => {

@@ -11,14 +11,17 @@
   </thead>
   <tbody>
       <tr *ngFor="let phase of phases.phases | paginate: { itemsPerPage: 3, currentPage: currentPage, totalItems: phases.totalItems, id:'server'} ">
-        <td class = "table-cell">{{ phase.name }}</td>
-        
+        <td class = "table-cell" contenteditable='true' (input)="onRowClick($event)" [textContent]="phase.name" (input)="phase.name=$event.target.textContent">{{ phase.name }}</td>
          <td class = "table-cell">
+<!--           <img src="assets/edit.svg" style="width:30px"> -->
+<!-- 		  <img src="assets/delete.svg" (click) = "deleteComapny(company)" style="width:30px"> -->
           <button type="button" class="btn btn-primary" (click) = "deletePhase(phase)">
             <span class="glyphicon glyphicon-remove" ></span>
           </button>
-          <button type="button" class="btn btn-primary">
-            <span class="glyphicon glyphicon-pencil"></span></button>
+          <img src="assets/35.gif" *ngIf="loading" />
+          <button [disabled]="!isValid" class="btn btn-primary" (click) = "updatePhase(phase)">
+            <span class="glyphicon glyphicon-save"></span></button>
+            <img src="assets/35.gif" *ngIf="loading" />
  
         </td>
      </tr>

@@ -60,8 +60,8 @@ export class NewUserComponent implements OnInit {
     user.setRoleIds(this.appliedRoles);
     this.userService.save(user).subscribe(data => {
         console.log(data);
-        user.setId(data);
-        this.users.addUser(user);
+       // user.setId(data);
+        //this.users.addUser(user);
       this.stateService.go('user');
 
     }, error => {
@@ -79,7 +79,7 @@ export class NewUserComponent implements OnInit {
     this.roleService.getRoles(null).subscribe( data => {
       this.availableRoles = this.roles.getRoles();
   }, error => {
-      window.alert(error._body);
+     console.log(error._body.toString() + " No roles found");
     });
   }
 }

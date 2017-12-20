@@ -14,7 +14,8 @@ const phaseState = { name: 'phase', url: '/phase',  component: PhaseComponent };
 export class NewPhaseComponent implements OnInit {
 
    private name: string ;
-
+   loading: boolean = false;
+   
   constructor(private phaseService: PhaseService, private phases: Phases, public stateService: StateService)  {
 
   }
@@ -23,18 +24,20 @@ export class NewPhaseComponent implements OnInit {
   }
   
   addNewPhase() {
-    
+    this.loading = true;
     let phase: Phase = new Phase();
     phase.setName(this.name);
    
     this.phaseService.save(phase).subscribe(data => {
         console.log(data);
-        phase.setId(data);
-        this.phases.addPhase(phase);
+       // phase.setId(data);
+       // this.phases.addPhase(phase);
       this.stateService.go('phase');
+      this.loading = false;
 
     }, error => {
       window.alert(error._body);
+      this.loading = false;
     });
 
 

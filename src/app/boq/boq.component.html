@@ -1,7 +1,7 @@
-<div class="container digi-boq rounded" >
+<div class="container-fluid digi-boq rounded" >
 <div class="column">
 	<div class = "glyphicon glyphicon-cog">MANAGE BOQS</div>
-	<button class = "btn btn-primary round pull-right"><a href="#/new-boq">+Add BoQ</a></button>
+	<a href="#/new-boq" class="btn btn-primary round pull-right" role="button">+Add BoQ</a>
 </div>
 
 <table class="table ">
@@ -20,11 +20,8 @@
         <td class = "table-cell">{{ boq.version }}</td>
         <td class = "table-cell">{{ boq.totalVersions }}</td>
          <td class = "table-cell">
-          <button type="button" class="btn btn-primary round" (click) = "deleteBoQ(boq)">
-            <span class="glyphicon glyphicon-remove" ></span>
-          </button>
-          <button type="button" class="btn btn-primary round">
-            <span class="glyphicon glyphicon-pencil"></span></button>
+           <img src="assets/edit.svg" style="width:30px">
+		   <img src="assets/delete.svg" (click) = "deleteBoQ(boq)" style="width:30px">
         </td>
      </tr>
   </tbody>

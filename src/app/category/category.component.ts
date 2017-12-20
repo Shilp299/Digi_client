@@ -12,17 +12,19 @@ import {QueryParams} from "../home/query-obeservables/query-params";
   styleUrls: ['./category.component.scss']
 })
 
+
 export class CategoryComponent implements OnInit {
   private subscription: Subscription;
   private currentSearchString: string;
   private currentPage = 1;
-
+  pageMode : string;
   constructor(private categoryService: CategoryService,
               private queryParamsService: QueryParamsService, private categories: Categories)  {
     this.getCategories(null);
   }
 
   ngOnInit() {
+  this.pageMode = "viewMode";
     this.subscription = this.queryParamsService.getQueryParams()
       .subscribe(
         queryParam => {
@@ -41,7 +43,7 @@ export class CategoryComponent implements OnInit {
     this.categoryService.getCategories(queryParams).subscribe(data => {
       },
     error => {
-      window.alert(error._body.errorMessage);
+      console.log(error._body.toString());
     });
 
   }
@@ -51,7 +53,7 @@ export class CategoryComponent implements OnInit {
 
     });
   }
-
+  
   getPage(page: number ) {
     this.currentPage = page;
     this.queryParamsService.setPageNumber( page - 1);

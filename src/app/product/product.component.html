@@ -30,11 +30,8 @@
         <td class = "table-cell">{{ product.descrition }}</td>
         <td class = "table-cell">{{ product.bimId }}</td>
          <td class = "table-cell">
-          <button type="button" class="btn btn-primary round" (click) = "deleteProduct(product)">
-            <span class="glyphicon glyphicon-remove" ></span>
-          </button>
-          <button type="button" class="btn btn-primary round">
-            <span class="glyphicon glyphicon-pencil"></span></button>
+         <img src="assets/edit.svg" style="width:30px">
+		 <img src="assets/delete.svg" (click) = "deleteProduct(product)" style="width:30px">
         </td>
      </tr>
   </tbody>

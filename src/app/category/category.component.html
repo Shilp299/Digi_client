@@ -17,18 +17,16 @@
         <td class = "table-cell">{{ category.name }}</td>
         <td class = "table-cell">{{ category.description }}</td>
          <td class = "table-cell">
-            <select id="subCat-option" class="subCat-control" name="subCategories">
-              <option *ngFor="let subcatName of category.subCategories" [value]="subcatName">
-                {{ subcatName }}
-              </option>
-            </select>
+         {{ category.subCategories }}
+<!--             <select id="subCat-option" class="subCat-control" name="subCategories" > -->
+<!--               <option *ngFor="let subcatName of category.subCategories" [value]="subcatName"> -->
+<!--                 {{ subcatName }} -->
+<!--               </option> -->
+<!--             </select> -->
            </td>
            <td>
-          <button type="button" class="btn btn-primary round" (click) = "deleteCategory(category)">
-            <span class="glyphicon glyphicon-remove" ></span>
-          </button>
-          <button type="button" class="btn btn-primary round">
-            <span class="glyphicon glyphicon-pencil"></span></button>
+           <img src="assets/edit.svg" style="width:30px" (click) = "editCategory(category)">
+		   <img src="assets/delete.svg" (click) = "deleteCategory(category)" style="width:30px">
         </td>
      </tr>
   </tbody>

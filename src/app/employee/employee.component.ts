@@ -43,7 +43,7 @@ export class EmployeeComponent implements OnInit {
     this.employeeService.getEmployees(queryParams).subscribe(data => {
       },
     error => {
-      window.alert(error._body.errorMessage);
+     console.log(error._body.toString() + " No employees found");
     });
 
   }

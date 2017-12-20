@@ -74,7 +74,7 @@ export class RoleService {
   }
 
   public delete(id: string)  {
-    const endPoint = this.userUrl  + id ;
+    const endPoint = this.globals.getBackendUrl() + this.userUrl  + id ;
       // Returns response
     return this.http.delete(endPoint)
       .map(res => {

@@ -80,4 +80,14 @@ export class PhaseService {
         }
       );
   }
+  
+  public update(phase: Phase)  {
+    const endPoint = this.phaseUrl  + phase.getId();
+      // Returns response
+    return this.http.patch(endPoint, phase)
+      .map(res => {
+          const res1 = res.json();
+        }
+      );
+  }
 }

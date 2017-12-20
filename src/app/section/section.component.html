@@ -16,14 +16,10 @@
         <td class = "table-cell">{{ section.sectionName }}</td>
         <td class = "table-cell">{{ section.specificationName }}</td>
         <td class = "table-cell">{{ section.productNames }}</td>
-      
-         <td class = "table-cell">
-          <button type="button" class="btn btn-primary" (click) = "deleteSection(section)">
-            <span class="glyphicon glyphicon-remove" ></span>
-          </button>
-          <button type="button" class="btn btn-primary">
-            <span class="glyphicon glyphicon-pencil"></span></button>
-         </td>
+ 		<td class = "table-cell">
+         <img src="assets/edit.svg" style="width:30px">
+		 <img src="assets/delete.svg" (click) = "deleteSection(section)" style="width:30px">
+        </td>
      </tr>
   </tbody>
  </table>

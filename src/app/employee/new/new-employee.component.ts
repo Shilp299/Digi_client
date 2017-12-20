@@ -81,14 +81,14 @@ export class NewEmployeeComponent implements OnInit {
     this.companyService.getCompanies(null).subscribe( data => {
       this.availableCompanies = this.companies.getCompanies();
     }, error => {
-      window.alert(error._body);
+       console.log(error._body.toString() + " No companies found");
     });
   }
   getProjects() {
     this.projectService.getProjects(null).subscribe( data => {
       this.availableProjects = this.projects.getProjects();
     }, error => {
-      window.alert(error._body);
+      console.log(error._body.toString() + " No projects found");
     });
   }
   

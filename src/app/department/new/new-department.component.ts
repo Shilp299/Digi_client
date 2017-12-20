@@ -35,8 +35,8 @@ export class NewDepartmentComponent implements OnInit {
     department.setProjectId(this.projectId);
     this.departmentService.save(department).subscribe(data => {
         console.log(data);
-        department.setId(data);
-        this.departments.addDepartment(department);
+       // department.setId(data);
+       // this.departments.addDepartment(department);
       this.stateService.go('department');
 
     }, error => {
@@ -48,7 +48,7 @@ getProjects(){
     this.projectService.getProjects(null).subscribe( data => {
       this.availableProjects = this.projects.getProjects();
     }, error => {
-      window.alert(error._body);
+        console.log(error._body.toString() + " No projects found");
     });
   }
   

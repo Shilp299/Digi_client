@@ -51,8 +51,8 @@ export class NewProjectComponent implements OnInit {
     project.setPhase(this.phase);
     this.projectService.save(project).subscribe(data => {
         console.log(data);
-        project.setId(data);
-        this.projects.addProject(project);
+        //project.setId(data);
+        //this.projects.addProject(project);
       this.stateService.go('project');
 
     }, error => {
@@ -66,7 +66,7 @@ export class NewProjectComponent implements OnInit {
     this.phaseService.getPhases(null).subscribe( data => {
       this.availablePhases = this.phases.getPhases();
     }, error => {
-      window.alert(error._body);
+      console.log(error._body.toString() + " No phases found");
     });
   }
   
@@ -74,7 +74,7 @@ export class NewProjectComponent implements OnInit {
     this.clientService.getClients(null).subscribe( data => {
       this.availableClients = this.clients.getClients();
     }, error => {
-      window.alert(error._body);
+      console.log(error._body.toString() + " No clients found");
     });
   }
   

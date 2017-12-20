@@ -19,11 +19,8 @@
         <td class = "table-cell">{{ subcategory.description }}</td>
          <td class = "table-cell">{{ subcategory.parentName }}</td>
          <td class = "table-cell">
-          <button type="button" class="btn btn-primary round" (click) = "deleteSubcategory(subcategory)">
-            <span class="glyphicon glyphicon-remove" ></span>
-          </button>
-          <button type="button" class="btn btn-primary round">
-            <span class="glyphicon glyphicon-pencil"></span></button>
+	         <img src="assets/edit.svg" style="width:30px">
+			 <img src="assets/delete.svg" (click) = "deleteSubcategory(subcategory)" style="width:30px">
         </td>
      </tr>
   </tbody>

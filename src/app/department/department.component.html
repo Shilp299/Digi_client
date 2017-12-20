@@ -17,15 +17,12 @@
         <td class = "table-cell">{{ department.name }}</td>
         <td class = "table-cell">{{ department.projectName }}</td>
          <td class = "table-cell">
-          <button type="button" class="btn btn-primary round" (click) = "deleteDepartment(department)">
-            <span class="glyphicon glyphicon-remove" ></span>
-          </button>
-          <button type="button" class="btn btn-primary round">
-            <span class="glyphicon glyphicon-pencil"></span></button>
+           <img src="assets/edit.svg" style="width:30px">
+		   <img src="assets/delete.svg" (click) = "deleteDepartment(department)" style="width:30px">
         </td>
      </tr>
   </tbody>
  </table>
   <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
-  <new-department></new-department>
+ 
 </div>

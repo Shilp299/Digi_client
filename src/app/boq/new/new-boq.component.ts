@@ -36,8 +36,8 @@ export class NewBoQComponent implements OnInit {
     boq.setBoQDepartmentId(this.boQDepartmentId);
     this.boqService.save(boq).subscribe(data => {
         console.log(data);
-        boq.setId(data);
-        this.boqs.addBoQ(boq);
+       // boq.setId(data);
+        //this.boqs.addBoQ(boq);
       this.stateService.go('boq');
 
     }, error => {
@@ -49,7 +49,7 @@ export class NewBoQComponent implements OnInit {
     this.departmentService.getDepartments(null).subscribe( data => {
       this.availableDepartments = this.departments.getDepartments();
     }, error => {
-      window.alert(error._body);
+       console.log(error._body.toString() + " No Departments found");
     });
   }
   

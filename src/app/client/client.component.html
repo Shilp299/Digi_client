@@ -20,15 +20,12 @@
         <td class = "table-cell">{{ client.projectNames }}</td>
         
          <td class = "table-cell">
-          <button type="button" class="btn btn-primary" (click) = "deleteClient(client)">
-            <span class="glyphicon glyphicon-remove" ></span>
-          </button>
-          <button type="button" class="btn btn-primary">
-            <span class="glyphicon glyphicon-pencil"></span></button>
+       
+           <img src="assets/edit.svg" style="width:30px">
+		   <img src="assets/delete.svg" (click) = "deleteClient(client)" style="width:30px">
          </td>
      </tr>
   </tbody>
  </table>
   <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
-  <new-client></new-client>
 </div>

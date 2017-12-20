@@ -6,6 +6,7 @@ import {HttpModule} from '@angular/http';
 import {NewPhaseModule} from './new/new-phase.module';
 import {Phases} from './phases';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     NgxPaginationModule,
     NewPhaseModule
   ],

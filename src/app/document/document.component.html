@@ -22,9 +22,7 @@
         <td class = "table-cell">{{ document.creationTime |  date:'MM/dd/yyyy'}}</td>
         
          <td class = "table-cell">
-          <button type="button" class="btn btn-primary" (click) = "deleteDocument(document)">
-            <span class="glyphicon glyphicon-remove" ></span>
-          </button>
+         	<img src="assets/delete.svg" (click) = "deleteDocument(document)" style="width:30px">
          </td>
      </tr>
   </tbody>

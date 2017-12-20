@@ -17,6 +17,8 @@ export class PhaseComponent implements OnInit {
   private subscription: Subscription;
   private currentSearchString: string;
   private currentPage = 1;
+  isValid: boolean;
+  loading: boolean = false;
   constructor(private  phaseService: PhaseService,
               private phases: Phases ,
               private queryParamsService: QueryParamsService)  {
@@ -24,6 +26,7 @@ export class PhaseComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isValid = false;
     this.subscription = this.queryParamsService.getQueryParams()
       .subscribe(
         queryParam => {
@@ -42,16 +45,29 @@ export class PhaseComponent implements OnInit {
     this.phaseService.getPhases(queryParams).subscribe(data => {
       },
     error => {
-      window.alert(error._body.errorMessage);
+      console.log(error._body.toString() + " No phases found");
     });
 
   }
 
   public deletePhase(phase: Phase) {
+    this.loading = true;
     this.phaseService.delete(phase.getId()).subscribe(data => {
-
+		 this.loading = false;
     });
   }
+
+ public updatePhase(phase: Phase) {
+    this.loading = true;
+    this.phaseService.update(phase).subscribe(data => {
+		 this.loading = false;
+    });
+  }
+  
+ onRowClick(event){
+	this.isValid = true;
+   // console.log(event.target.outerText, phase.id);
+  } 
 
   getPage(page: number ){
     this.currentPage= page;

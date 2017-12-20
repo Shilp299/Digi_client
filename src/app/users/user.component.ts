@@ -43,12 +43,10 @@ export class UserComponent implements OnInit {
     this.userService.getUsers(queryParams).subscribe(data => {
       },
     error => {
-      window.alert(error._body.errorMessage);
+      console.log(error._body.toString() + " No users found");
     });
 
   }
-
-
 
   public deleteUser(user: User) {
     this.userService.delete(user.getId()).subscribe(data => {

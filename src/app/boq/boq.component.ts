@@ -42,7 +42,7 @@ export class BoQComponent implements OnInit {
     this.boqService.getBoQs(queryParams).subscribe(data => {
       },
     error => {
-      window.alert(error._body.errorMessage);
+       console.log(error._body.toString());
     });
 
   }

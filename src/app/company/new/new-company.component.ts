@@ -33,8 +33,8 @@ export class NewCompanyComponent implements OnInit {
     company.setAddress(this.address);
     this.companyService.save(company).subscribe(data => {
         console.log(data);
-        company.setId(data);
-        this.companies.addCompany(company);
+       // company.setId(data);
+       // this.companies.addCompany(company);
       this.stateService.go('company');
 
     }, error => {

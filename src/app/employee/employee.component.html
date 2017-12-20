@@ -21,12 +21,9 @@
         <td class = "table-cell">{{ employee.telephone }}</td>
         <td class = "table-cell">{{ employee.companyName }}</td>
         <td class = "table-cell">{{ employee.noOfProjects }}</td>
-         <td class = "table-cell">
-          <button type="button" class="btn btn-primary round" (click) = "deleteEmployee(employee)">
-            <span class="glyphicon glyphicon-remove" ></span>
-          </button>
-          <button type="button" class="btn btn-primary round" >
-            <span class="glyphicon glyphicon-pencil"></span></button>
+        <td class = "table-cell">
+         <img src="assets/edit.svg" style="width:30px">
+		 <img src="assets/delete.svg" (click) = "deleteEmployee(employee)" style="width:30px">
         </td>
      </tr>
   </tbody>

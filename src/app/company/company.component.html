@@ -15,11 +15,8 @@
         <td class = "table-cell">{{ company.companyName }}</td>
         <td class = "table-cell">{{ company.address }}</td>
          <td class = "table-cell">
-          <button type="button" class="btn btn-primary" (click) = "deleteComapny(company)">
-            <span class="glyphicon glyphicon-remove" ></span>
-          </button>
-          <button type="button" class="btn btn-primary">
-            <span class="glyphicon glyphicon-pencil"></span></button>
+           <img src="assets/edit.svg" style="width:30px">
+		   <img src="assets/delete.svg" (click) = "deleteComapny(company)" style="width:30px">
         </td>
      </tr>
   </tbody>

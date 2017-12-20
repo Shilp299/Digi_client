@@ -52,8 +52,8 @@ export class NewProductComponent implements OnInit {
     product.setQuantity(this.quantity);
     this.productService.save(product).subscribe(data => {
         console.log(data);
-        product.setId(data);
-        this.products.addProduct(product);
+        //product.setId(data);
+       // this.products.addProduct(product);
       this.stateService.go('product');
 
     }, error => {

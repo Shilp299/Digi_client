@@ -38,8 +38,8 @@ export class NewClientComponent implements OnInit {
     client.setAddress(this.address);
     this.clientService.save(client).subscribe(data => {
         console.log(data);
-        client.setId(data);
-        this.clients.addClient(client);
+       // client.setId(data);
+        //this.clients.addClient(client);
       this.stateService.go('client');
 
     }, error => {
@@ -53,7 +53,7 @@ export class NewClientComponent implements OnInit {
     this.companyService.getCompanies(null).subscribe( data => {
       this.availableCompanies = this.companies.getCompanies();
     }, error => {
-      window.alert(error._body);
+      console.log(error._body.toString() + " No companies found");
     });
   }
 

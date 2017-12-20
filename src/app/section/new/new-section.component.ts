@@ -36,8 +36,8 @@ export class NewSectionComponent implements OnInit {
     section.setBoqId(this.boqId);
     this.sectionService.save(section).subscribe(data => {
         console.log(data);
-        section.setId(data);
-        this.sections.addSection(section);
+        //section.setId(data);
+        //this.sections.addSection(section);
       this.stateService.go('section');
 
     }, error => {
@@ -50,7 +50,7 @@ export class NewSectionComponent implements OnInit {
     this.boQService.getBoQs(null).subscribe( data => {
       this.availableBoQs = this.boQs.getBoQs();
     }, error => {
-      window.alert(error._body);
+      console.log(error._body.toString() + " No boqs found");
     });
   }
 
