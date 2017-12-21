@@ -57,5 +57,8 @@
     "styleExt": "scss",
     "component": {
     }
-  }
+  }, 
+  "scripts": [ "../node_modules/jspdf/dist/jspdf.min.js" ],
+  "scripts": [
+    "../node_modules/html2canvas/dist/html2canvas.min.js"]
 }

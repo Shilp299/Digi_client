@@ -1,10 +1,12 @@
 <div class="container-fluid digi-boq rounded" >
 <div class="column">
 	<div class = "glyphicon glyphicon-cog">MANAGE BOQS</div>
+	<a class="btn btn-primary round pull-right" role="button" (click)="exportAsPdf()">Export BoQ</a>
 	<a href="#/new-boq" class="btn btn-primary round pull-right" role="button">+Add BoQ</a>
 </div>
-
-<table class="table ">
+<div id="boqs">
+<div id="ss" #ss><label>"Hello world"</label></div>
+<table class="table" id="tableboq">
   <thead>
   <tr>
   	<th>Project Id</th>
@@ -26,5 +28,7 @@
      </tr>
   </tbody>
  </table>
+ </div>
   <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
 </div>
+

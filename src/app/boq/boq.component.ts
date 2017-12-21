@@ -1,11 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Inject, ElementRef, ViewChild} from '@angular/core';
 import {BoQService} from './boq.service';
 import {BoQ} from './boq';
 import {BoQs} from "./boqs";
 import {QueryParamsService} from '../home/query-obeservables/query-params.service';
 import {Subscription} from "rxjs/Subscription";
 import {QueryParams} from "../home/query-obeservables/query-params";
-
+import * as jsPDF from 'jspdf';
 @Component({
   selector: 'boq',
   templateUrl: './boq.component.html',
@@ -17,8 +17,9 @@ export class BoQComponent implements OnInit {
   private subscription: Subscription;
   private currentSearchString: string;
   private currentPage = 1;
+    @ViewChild('table') el: ElementRef;
   constructor(private boqService: BoQService,
-              private boqs: BoQs,
+              private boqs: BoQs, public element: ElementRef,
               private queryParamsService: QueryParamsService)  {
     this.getBoQs(null);
   }
@@ -51,6 +52,24 @@ export class BoQComponent implements OnInit {
     this.boqService.delete(boq.getId()).subscribe(data => {
 
     });
+  }
+  
+  public exportAsPdf(){
+  		let pdf = new jsPDF('p','pt','a4');
+		let elementHandler = {
+              '#Export': function (element, renderer) {
+                return true;
+                    }};
+		pdf.setFillColor(204, 204,204,0);
+        let options = {
+        	 pagesplit: true,
+        	'elementHandlers': elementHandler,
+         	//background: '#ffffff'
+   		 };
+             pdf.addHTML(document.getElementById('tableboq'), 5, 5, options, function() {
+    			pdf.save('web.pdf');
+  			});
+            
   }
 
   getPage(page: number ) {
