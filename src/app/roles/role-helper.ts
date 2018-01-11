@@ -25,10 +25,10 @@ export class RoleHelper{
     this.permissions.set('DELETE_PROJECT', "Can delete a Project");
     this.permissions.set('UPDATE_PROJECT', "Can edit a Project");
     
-    this.permissions.set('UPDATE_COMPNAY', "Can edit a Company");
-    this.permissions.set('CREATE_COMPNAY', "Can add a new Company");
-    this.permissions.set('DELETE_COMPNAY', "Can delete Company");
-    this.permissions.set('READ_COMPNAY', "Can view the list of Companies");
+    this.permissions.set('UPDATE_COMPANY', "Can edit a Company");
+    this.permissions.set('CREATE_COMPANY', "Can add a new Company");
+    this.permissions.set('DELETE_COMPANY', "Can delete Company");
+    this.permissions.set('READ_COMPANY', "Can view the list of Companies");
 //    
 //    this.permissions.set('CREATE_DEPARTMENT', "Can add a new Department");
 //    this.permissions.set('DELETE_DEPARTMENT', "Can delete a new Department");

@@ -42,7 +42,7 @@ export class DepartmentService {
           const departments: Array<Department> =  new Array<Department>();
           for ( i = 0 ; i < response.length ; i++) {
             const department: Department = new Department();
-            department.setName(response[i].boqDepartmentName);
+            department.setBoqDepartmentName(response[i].boqDepartmentName);
             department.setProjectName(response[i].projectName);
             department.setId(response[i].id);
             departments.push(department);

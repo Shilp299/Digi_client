@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "buildDev" : "ng build",
+    "buildDev": "ng build",
     "buildWatch": "ng build --watch=true",
     "test": "ng test",
     "lint": "ng lint",
@@ -23,12 +23,14 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "@types/jspdf": "^1.1.31",
     "@uirouter/angular": "^1.0.0-beta.7",
     "core-js": "^2.4.1",
+    "html2canvas": "^1.0.0-alpha.4",
+    "jspdf": "^1.3.5",
     "ng2-pagination": "^2.0.2",
     "ngx-pagination": "^3.0.1",
     "rxjs": "^5.4.2",
-    
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

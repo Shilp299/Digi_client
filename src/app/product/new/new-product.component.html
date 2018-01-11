@@ -18,7 +18,7 @@
             <label for="category-option" class="form-control-label">Categories:</label>
             <select id="category-option" class="form-control"   [(ngModel)]="categoryId" name="categories">
               <option *ngFor="let category of availableCategories" [value]="category.id">
-                {{ category.Name }}
+                {{ category.name }}
               </option>
             </select>            
           </div>
