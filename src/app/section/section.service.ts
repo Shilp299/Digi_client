@@ -78,7 +78,7 @@ export class SectionService {
     return this.http.delete(endPoint)
       .map(res => {
           const res1 = res.json();
-          this.sections.deleteSection(res1.id);
+          this.sections.deleteSection(res1.response);
         }
       );
   }

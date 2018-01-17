@@ -83,7 +83,7 @@ export class EmployeeService {
     return this.http.delete(endPoint)
       .map(res => {
           const res1 = res.json();
-          this.employees.deleteEmployee(res1.id);
+          this.employees.deleteEmployee(res1.response);
         }
       );
   }

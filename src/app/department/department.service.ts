@@ -77,7 +77,7 @@ export class DepartmentService {
     return this.http.delete(endPoint)
       .map(res => {
           const res1 = res.json();
-          this.departments.deleteDepartment(res1.id);
+          this.departments.deleteDepartment(res1.response);
         }
       );
   }

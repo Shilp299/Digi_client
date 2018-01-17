@@ -75,7 +75,7 @@ export class CategoryService {
     return this.http.delete(endPoint)
       .map(res => {
           const res1 = res.json();
-          this.categories.deleteCategory(res1.id);
+          this.categories.deleteCategory(res1.response);
         }
       );
   }

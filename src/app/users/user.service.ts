@@ -85,7 +85,7 @@ export class UserService {
     return this.http.delete(endPoint)
       .map(res => {
           const res1 = res.json();
-          this.users.deleteUser(res1.id);
+          this.users.deleteUser(res1.response);
         }
       );
   }

@@ -76,7 +76,7 @@ export class BoQService {
     return this.http.delete(endPoint)
       .map(res => {
           const res1 = res.json();
-          this.boqs.deleteBoQ(res1.id);
+          this.boqs.deleteBoQ(res1.response);
         }
       );
   }

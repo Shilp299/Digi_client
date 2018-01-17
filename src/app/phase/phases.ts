@@ -20,8 +20,8 @@ export class Phases {
     this.totalItems++;
   }
 
-  public deletePhase(name: string) {
-    let phaseFound: Phase = this.phases.find(phase => name === phase.getName());
+  public deletePhase(id: string) {
+    let phaseFound: Phase = this.phases.find(phase => id === phase.getId());
     const index: number = this.phases.indexOf(phaseFound);
     if (index !== -1) {
       this.phases.splice(index, 1);

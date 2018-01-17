@@ -79,7 +79,7 @@ export class ProductService {
     return this.http.delete(endPoint)
       .map(res => {
           const res1 = res.json();
-          this.products.deleteProduct(res1.id);
+          this.products.deleteProduct(res1.response);
         }
       );
   }

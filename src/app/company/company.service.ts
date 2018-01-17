@@ -80,7 +80,7 @@ export class CompanyService {
     return this.http.delete(endPoint)
       .map(res => {
           const res1 = res.json();
-          this.companies.deleteCompany(res1.id);
+          this.companies.deleteCompany(res1.response);
         }
       );
   }

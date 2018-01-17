@@ -79,7 +79,7 @@ export class ClientService {
     return this.http.delete(endPoint)
       .map(res => {
           const res1 = res.json();
-          this.clients.deleteClient(res1.id);
+          this.clients.deleteClient(res1.response);
         }
       );
   }

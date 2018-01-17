@@ -82,7 +82,7 @@ export class ProjectService {
     return this.http.delete(endPoint)
       .map(res => {
           const res1 = res.json();
-          this.projects.deleteProject(res1.id);
+          this.projects.deleteProject(res1.response);
         }
       );
   }

@@ -82,7 +82,7 @@ export class DocumentService {
     return this.http.delete(endPoint)
       .map(res => {
           const res1 = res.json();
-          this.documents.deleteDocument(res1.id);
+          this.documents.deleteDocument(res1.response);
         }
       );
   }

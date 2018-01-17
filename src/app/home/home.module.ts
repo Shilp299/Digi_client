@@ -62,8 +62,11 @@ import { EmployeeComponent } from '../employee/employee.component';
 import { EmployeeModule } from '../employee/employee.module';
 import { NewEmployeeComponent } from '../employee/new/new-employee.component';
 import { NewEmployeeModule } from '../employee/new/new-employee.module';
+import { MeetingComponent } from '../meeting/meeting.component';
+import { MeetingModule } from '../meeting/meeting.module';
+import { NewMeetingComponent } from '../meeting/new/new-meeting.component';
+import { NewMeetingModule } from '../meeting/new/new-meeting.module';
 import { LoginComponent } from '../login/login.component';
-//import { LoginModule } from '../login/login.module';
 
 const userState = { name: 'user', url: '/user',  component: UserComponent };
 const newUserState = { name: 'new-user', url: '/new-user',  component: NewUserComponent };
@@ -93,6 +96,8 @@ const subcategoryState = { name: 'subcategory', url: '/subcategory',  component:
 const newSubcategoryState = { name: 'new-subcategory', url: '/new-subcategory',  component: NewSubcategoryComponent };
 const employeeState = { name: 'employee', url: '/employee',  component: EmployeeComponent };
 const newEmployeeState = { name: 'new-employee', url: '/new-employee',  component: NewEmployeeComponent };
+const meetingState = { name: 'meeting', url: '/meeting',  component: MeetingComponent };
+const newMeetingState = { name: 'new-meeting', url: '/new-meeting',  component: NewMeetingComponent };
 const loginState = { name: 'login', url: '/user-login',  component: LoginComponent };
 
 @NgModule({
@@ -133,11 +138,14 @@ const loginState = { name: 'login', url: '/user-login',  component: LoginCompone
     NewSubcategoryModule,
     EmployeeModule,
     NewEmployeeModule,
+    MeetingModule,
+    NewMeetingModule,
+
     UIRouterModule.forRoot({ states: [ userState, newUserState, roleState, newRoleState, projectState,
       newProjectState, clientState, newClientState, companyState, newCompanyState, phaseState,
       newPhaseState, documentState, newDocumentState, boqState, newBoQState, departmentState, newDepartmentState,
       sectionState, newSectionState, productState, newProductState, categoryState, newCategoryState,
-      subcategoryState, newSubcategoryState, employeeState, newEmployeeState], useHash: true })
+      subcategoryState, newSubcategoryState, employeeState, newEmployeeState, meetingState, newMeetingState], useHash: true })
   ],
   exports : [HomeComponent],
   providers: [QueryParamsService],

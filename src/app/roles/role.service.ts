@@ -79,7 +79,7 @@ export class RoleService {
     return this.http.delete(endPoint)
       .map(res => {
           const res1 = res.json();
-          this.roles.deleteRole(res1.id);
+          this.roles.deleteRole(res1.response);
         }
       );
   }

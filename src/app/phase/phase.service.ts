@@ -76,7 +76,7 @@ export class PhaseService {
     return this.http.delete(endPoint)
       .map(res => {
           const res1 = res.json();
-          this.phases.deletePhase(res1.id);
+          this.phases.deletePhase(res1.response);
         }
       );
   }
