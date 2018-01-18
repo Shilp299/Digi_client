@@ -1,0 +1,55 @@
+<div class="container-fluid rounded" >
+        <div class = "glyphicon glyphicon-cog">ADD EMPLOYEE</div>
+           <form>
+          
+             <div class="form-group">
+               <label for="quality-Title" class="form-control-label">Title:</label>
+               <input type="text" class="form-control" id="quality-Title" [(ngModel)]="Title" name="Title">
+             </div>
+             <div class="form-group">
+               <label for="quality-Status" class="form-control-label">Status:</label>
+               <input type="text" class="form-control" id="quality-Status" [(ngModel)]="Status" name="Status">
+             </div>
+             <div class="form-group">
+               <label for="quality-Opened" class="form-control-label">Opened Date:</label>
+               <input type="date" class="form-control" id="quality-opened" [(ngModel)]="opened" name="opened">
+             </div>
+             <div class="form-group">
+                <label for="projects" class="form-control-label">Projects:</label>
+                <select id="project-option" class="form-control"   [(ngModel)]="projectId" name="projects" multiple>
+                  <option *ngFor="let project of availableProjects" [value]="project.id">
+                    {{ project.projectName }}
+                  </option>
+                </select>          
+              </div>
+             <div>
+               <label for="quality-Description" class="form-control-label">Short Description:</label>
+               <input type="text" class="form-control" id="Description" [(ngModel)]="Description" name="Description" style= "height: 100px;">
+             
+            </div> 
+             <div class="form-group">
+                <label for="quality-Rectified" class="form-control-label"> Date Rectified:</label>
+                <input type="date" class="form-control" id="quality-Rectified" [(ngModel)]="Rectified" name="Rectified">
+              </div> 
+              <div>
+                  <label for="quality-Action" class="form-control-label">Action by:</label>
+                  <input type="text" class="form-control" id="Action" [(ngModel)]="Action" name="Action">
+              </div>
+              <div>
+                  <label for="quality-Remark" class="form-control-label">Notes/Remarks:</label>
+                  <input type="text" class="form-control" id="Remark" [(ngModel)]="Remark" name="Remark" style="height:100px">
+              </div>
+              <label>Attachment:</label>
+              <div class="form-group">
+                  <input type="file" (change)="addNewQuality($event)" required class="form-control " name="attach_file" id="attach_file">
+              </div>
+            </form>
+          <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" (click)="goBack()">Cancel</button>
+           <button type="button" class="btn btn-primary" (click)="addNewQuality()" >Add</button>
+         </div>
+</div>
+   
+   
+   
+   

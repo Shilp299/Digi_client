@@ -1,0 +1,44 @@
+<div class="container-fluid digi-quality rounded" >
+    <div class="column">
+        <div class = "glyphicon glyphicon-cog">QUALITY CONTROL SHEETS</div><br>
+        <!-- <label for="project-option" class="form-control-label" >Project:</label>
+        <select width = "50%" id="project-option" class="form-control"   [(ngModel)]="projectId" name="pojects">
+          <option *ngFor="let project of availableProjects" [value]="project.id">
+                   {{ project.ProjectName }} 
+          </option> 
+        </select>
+         -->
+        <a href="#/new-quality" class="btn btn-primary round pull-right" role="button">+Add Request</a>
+    </div>
+    
+    <table class="table ">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Date Opened</th>
+        <th>Short Description</th> 
+        <th>Project Name</th>   
+        <th>Date Rectified</th>
+        <th>Raised By</th>
+      </tr>
+      </thead>
+       <tbody>
+          <tr *ngFor="let quality of qualities.qualities | paginate: { itemsPerPage: 3, currentPage: currentPage, totalItems: qualities.totalItems, id:'server'} ">
+            <td class = "table-cell">{{quality.Title}}</td>
+            <td class = "table-cell">{{quality.Status}}</td>
+            <td class = "table-cell">{{quality.Opened}}</td>
+            <td class = "table-cell">{{quality.Description}}</td>
+            <td class = "tabble-cell">{{project.projectName}} </td>
+            <td class = "table-cell">{{quality.Rectified}}</td>
+            <td class = "table-cell">{{quality.Action}}</td>
+             <td class = "table-cell">
+             <img src="assets/edit.svg" (click) = "updateQuality(quality)" style="width:30px" >
+             <img src="assets/delete.svg" (click) = "deleteQuality(quality)" style="width:30px">
+            </td>
+         </tr>
+      </tbody> 
+     </table>
+      <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
+    </div>
+    

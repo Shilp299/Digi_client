@@ -67,6 +67,21 @@ import { MeetingModule } from '../meeting/meeting.module';
 import { NewMeetingComponent } from '../meeting/new/new-meeting.component';
 import { NewMeetingModule } from '../meeting/new/new-meeting.module';
 import { LoginComponent } from '../login/login.component';
+import { SpecificationModule} from '../Specification/specification.module';
+import {SpecificationComponent} from '../Specification/Specification.component';
+import {NewSpecificationModule} from '../Specification/new/new-specification.component.module';
+import {NewSpecifictaionComponent} from '../Specification/new/new-specification.component';
+import {Specification} from '../Specification/Specification';
+import { RequestComponent} from '../request/request.component';
+import { RequestModule} from '../request/request.module';
+import { NewRequestComponent} from '../request/new/new-request.component';
+import { NewRequestModule} from '../request/new/new-request.module';
+import { QualityComponent} from '../quality/quality.component';
+import { QualityModule} from '../quality/quality.module';
+import { NewQualityModule} from '../quality/new/new-quality.module';
+import { NewQualityComponent} from '../quality/new/new-quality.component';
+import { ProjectListComponent} from '../Projectlist/projectlist.component';
+import { ProjectListModule} from '../Projectlist/projectlist.module'; 
 
 const userState = { name: 'user', url: '/user',  component: UserComponent };
 const newUserState = { name: 'new-user', url: '/new-user',  component: NewUserComponent };
@@ -99,6 +114,13 @@ const newEmployeeState = { name: 'new-employee', url: '/new-employee',  componen
 const meetingState = { name: 'meeting', url: '/meeting',  component: MeetingComponent };
 const newMeetingState = { name: 'new-meeting', url: '/new-meeting',  component: NewMeetingComponent };
 const loginState = { name: 'login', url: '/user-login',  component: LoginComponent };
+// const specificationState={ name:'specification', url:'/specification', component:SpecificationComponent};
+// const NewSpecificationState={ name:'new-specification', url:'/new-specification', component:NewSpecifictaionComponent};
+const requestState = { name:'request', url:'/request', component:RequestComponent};
+const newRequestState = {name:'new-request', url:'/new-request', component: NewRequestComponent};
+const qualityState ={ name: 'quality', url :'/quality', component: QualityComponent};
+const newQualityState ={ name:'new-quality',url:'/new-quality', component:NewQualityComponent};
+const projectlistState ={ name: 'projectlist', url:'/projectlist', component:ProjectListComponent};
 
 @NgModule({
   declarations: [
@@ -140,12 +162,17 @@ const loginState = { name: 'login', url: '/user-login',  component: LoginCompone
     NewEmployeeModule,
     MeetingModule,
     NewMeetingModule,
-
-    UIRouterModule.forRoot({ states: [ userState, newUserState, roleState, newRoleState, projectState,
+    // NewSpecificationModule,
+    // SpecificationModule,
+    RequestModule,
+    QualityModule,
+    ProjectListModule,
+      UIRouterModule.forRoot({ states: [ userState, newUserState, roleState, newRoleState, projectState,
       newProjectState, clientState, newClientState, companyState, newCompanyState, phaseState,
       newPhaseState, documentState, newDocumentState, boqState, newBoQState, departmentState, newDepartmentState,
       sectionState, newSectionState, productState, newProductState, categoryState, newCategoryState,
-      subcategoryState, newSubcategoryState, employeeState, newEmployeeState, meetingState, newMeetingState], useHash: true })
+      subcategoryState, newSubcategoryState, employeeState, newEmployeeState, meetingState, newMeetingState,
+    requestState,newRequestState,qualityState,newQualityState,projectlistState], useHash: true })
   ],
   exports : [HomeComponent],
   providers: [QueryParamsService],

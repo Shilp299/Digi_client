@@ -1,0 +1,38 @@
+<div class="container-fluid digi-request rounded" >
+    <div class="column">
+    <div class = "glyphicon glyphicon-cog">CHANGE REQUEST</div>
+        <a href="#/new-request" class="btn btn-primary round pull-right" role="button">+Create New</a>
+    </div>
+  <table class="table">
+      <thead>
+        <tr>
+          <th>Changed ID</th>
+          <th>Short Description</th>
+          <th>Status</th>
+          <th>Open date</th>
+          <th>Project</th>
+          <th>Raised by</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor="let request of requests.requests | paginate: { itemsPerPage: 3, currentPage: currentPage, totalItems: requests.totalItems, id:'server'} ">
+                    <td class = "table-cell">{{ request.id }}</td>
+                    <td class = "table-cell">{{ request.Description }}</td>
+                    <td class = "table-cell">{{ request.Status }}</td>
+                    <td class = "table-cell">{{ request.DOB }}</td>
+                    <td class = "table-cell">{{ request.project }}</td>
+                    <td class = "table-cell">{{ request.Raised }}</td>
+                    <td class="table-cell">{{ request.Action }}</td>
+                    <td class = "table-cell">
+                     <img src="assets/edit.svg" style="width:30px">
+                     <img src="assets/delete.svg" (click) = "deleteRequest(request)" style="width:30px">
+                    </td>
+            </tr>
+      </tbody>
+  </table>
+  <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>     
+</div>
+    
+
+   

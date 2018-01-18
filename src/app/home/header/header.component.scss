@@ -1,3 +1,21 @@
+// *, *:before, *:after {
+//   box-sizing: inherit;
+// }
+// html {
+//   box-sizing: border-box;
+  
+// }
+// .grid {
+
+//   background: #ffffff;
+
+// }
+
+// .grid-logo-cell {
+//   flex: 1;
+//   background: #ffffff;
+// }
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -7,11 +25,27 @@ html {
 }
 .grid {
 
-  background: #ffffff;
+  background: darkblue;
 
 }
 
 .grid-logo-cell {
   flex: 1;
   background: #ffffff;
+  padding-top: 2%;
+  width:23.7%;
+}
+
+.dropdown-menu 
+{
+  margin-left: -114%;
+  position: absolute;
+  top: 100%;
+  float: left;
+  min-width: 101px;
+  list-style: none;
+  text-align: center; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+  border: 1px solid ;
+  background-clip: padding-box;
+
 }
